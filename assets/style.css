@@ -1,0 +1,10 @@
+/* lightweight portal styles */
+body{font-family:Arial,Helvetica,sans-serif;background:#f6f8fb;margin:0;color:#222}
+.container{max-width:1100px;margin:30px auto;padding:18px;background:#fff;border-radius:10px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.card{padding:18px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 4px 10px rgba(0,0,0,0.04)}
+.select, input[type=text], input[type=number]{width:100%;padding:10px;border-radius:8px;border:1px solid #d4dbe8;margin-top:8px;box-sizing:border-box}
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;background:#0066ff;color:#fff;text-decoration:none;border:none;cursor:pointer;margin-top:10px}
+.resultBox{margin-top:14px;padding:14px;background:#eef6ff;border-radius:8px;display:none}
+.pdfBtns a{display:inline-block;margin-right:10px;padding:8px 12px;border-radius:8px;border:1px solid #0066ff;color:#0066ff;background:#fff;text-decoration:none;font-weight:600}
+.small-note{font-size:13px;color:#666;margin-top:6px}
