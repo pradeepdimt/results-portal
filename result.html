@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Results - Student Portal</title>
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header><h1 style="padding:12px 20px">DIMT Law College</h1></header>
+
+<div class="container">
+  <h2>Check Result</h2>
+
+  <label>Course</label>
+  <select id="course" class="select">
+    <option value="">Select</option>
+    <option value="LLB">LLB</option>
+    <option value="BALLB">BALLB</option>
+  </select>
+
+  <label>Semester</label>
+  <select id="semester" class="select">
+    <option value="">Select</option>
+    <option value="SEM1">First Semester</option>
+    <option value="SEM2">Second Semester</option>
+  </select>
+
+  <label>Roll Number</label>
+  <input id="roll" type="text" placeholder="Enter Roll Number" />
+
+  <button class="btn" id="checkBtn">Check Result</button>
+
+  <div id="resultBox" class="resultBox"></div>
+  <div id="pdfArea" style="display:none;margin-top:10px;">
+    <div class="pdfBtns">
+      <a id="viewBtn" target="_blank">View PDF</a>
+      <a id="downBtn" download>Download PDF</a>
+    </div>
+    <p class="small-note">PDFs are loaded from results/&lt;COURSE&gt;/&lt;SEM&gt;/&lt;ROLL&gt;.pdf</p>
+  </div>
+</div>
+
+<footer style="padding:18px;text-align:center;color:#666">© DIMT Law College</footer>
+
+<script>
+document.getElementById('checkBtn').addEventListener('click', function(){
+  var course=document.getElementById('course').value;
+  var sem=document.getElementById('semester').value;
+  var roll=document.getElementById('roll').value.trim();
+  var box=document.getElementById('resultBox');
+  var pdfArea=document.getElementById('pdfArea');
+  var view=document.getElementById('viewBtn');
+  var down=document.getElementById('downBtn');
+
+  box.style.display='none';
+  pdfArea.style.display='none';
+
+  if(!course||!sem){
+    box.style.display='block';
+    box.innerHTML='<b style="color:#c0392b">Please select course and semester</b>';
+    return;
+  }
+
+  if(!roll){
+    box.style.display='block';
+    box.innerHTML='<b style="color:#c0392b">Please enter roll number</b>';
+    return;
+  }
+
+  var pdfPath = 'results/' + course + '/' + sem + '/' + roll + '.pdf';
+
+  box.style.display='block';
+  box.innerHTML='Result ready. Use the buttons below.';
+
+  view.href = pdfPath;
+  down.href = pdfPath;
+
+  pdfArea.style.display='block';
+});
+</script>
+</body>
+</html>
