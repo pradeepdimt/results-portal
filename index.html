@@ -1,90 +1,42 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Result Portal</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #f4f6fb; padding: 20px; }
-    .box { max-width: 650px; margin: auto; background: white; padding: 22px; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
-    h2 { text-align: center; margin-bottom: 12px; }
-    select, input { width: 100%; padding: 10px; margin-top: 10px; border-radius: 8px; border: 1px solid #ccc; }
-    button { width: 100%; padding: 12px; margin-top: 15px; background: #0066ff; color: white; border: none; font-size: 16px; border-radius: 8px; cursor: pointer; }
-    button:hover { background: #004ecc; }
-    #result { margin-top: 20px; padding: 15px; background: #e9f3ff; border-radius: 8px; display: none; }
-    #pdfArea { display: none; margin-top: 20px; }
-    .pdf-btn { display: inline-block; padding: 10px 14px; background: white; border: 1px solid #0066ff; color: #0066ff; border-radius: 8px; font-weight: bold; text-decoration: none; margin-right: 10px; }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Portal - DIMT Law College</title>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
-  <div class="box">
-    <h2>Student Result Portal</h2>
 
-    <label>Course</label>
-    <select id="course">
-      <option value="">Select Course</option>
-      <option value="LLB">LLB</option>
-      <option value="BALLB">BALLB</option>
-    </select>
+<header><h1 style="padding:12px 20px">DIMT Law College</h1></header>
 
-    <label>Semester</label>
-    <select id="semester">
-      <option value="">Select Semester</option>
-      <option value="SEM1">FIRST SEMESTER</option>
-      <option value="SEM2">SECOND SEMESTER</option>
-    </select>
+<div class="container">
+  <h2>Student Corner</h2>
+  <p class="small-note">Use the cards below to access exam form, results, admit card and notices.</p>
 
-    <label>Roll Number</label>
-    <input id="roll" placeholder="Enter Roll Number" />
+  <div class="grid" style="margin-top:18px;">
+    <a class="card" href="result.html" style="text-decoration:none;color:inherit;">
+      <h3>Result</h3>
+      <p>Check semester-wise results (LLB / BALLB)</p>
+    </a>
 
-    <button onclick="checkResult()">Check Result</button>
+    <a class="card" href="admitcard.html" style="text-decoration:none;color:inherit;">
+      <h3>Admit Card</h3>
+      <p>Download your admit card by roll number.</p>
+    </a>
 
-    <div id="result"></div>
+    <a class="card" href="notices.html" style="text-decoration:none;color:inherit;">
+      <h3>Notices</h3>
+      <p>Latest notices for students.</p>
+    </a>
 
-    <div id="pdfArea">
-      <h3>Download / View Marksheet</h3>
-      <a id="viewPdf" class="pdf-btn" target="_blank">VIEW PDF</a>
-      <a id="downloadPdf" class="pdf-btn" download>DOWNLOAD PDF</a>
-    </div>
+    <a class="card" href="#">
+      <h3>Exam Form</h3>
+      <p>Apply for examination (external link)</p>
+    </a>
   </div>
+</div>
 
-  <script>
-    function checkResult() {
-      let course = document.getElementById('course').value;
-      let sem = document.getElementById('semester').value;
-      let roll = document.getElementById('roll').value.trim();
-      let resultBox = document.getElementById('result');
-      let pdfArea = document.getElementById('pdfArea');
-      let view = document.getElementById('viewPdf');
-      let down = document.getElementById('downloadPdf');
-
-      if (!course || !sem) {
-        resultBox.style.display = 'block';
-        resultBox.innerHTML = '<b style="color:red;">Please select course & semester</b>';
-        pdfArea.style.display = 'none';
-        return;
-      }
-
-      if (!roll) {
-        resultBox.style.display = 'block';
-        resultBox.innerHTML = '<b style="color:red;">Please enter roll number</b>';
-        pdfArea.style.display = 'none';
-        return;
-      }
-
-      // Show simple result message
-      resultBox.style.display = 'block';
-      resultBox.innerHTML = 'Your result will display here (PDF contains full details).';
-
-      // Create PDF path
-      let pdfPath = `results/${course}/${sem}/${roll}.pdf`;
-
-      // Assign PDF Links
-      view.href = pdfPath;
-      down.href = pdfPath;
-
-      pdfArea.style.display = 'block';
-    }
-  </script>
+<footer style="padding:18px;text-align:center;color:#666">© DIMT Law College</footer>
 </body>
 </html>
